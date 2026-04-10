@@ -1018,7 +1018,26 @@
     document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
+    // Preload next and previous images
+    const len = currentGallery.photos.length;
+    [1, -1].forEach(dir => {
+      const next = currentGallery.photos[(currentIndex + dir + len) % len];
+      const preload = new Image();
+      preload.src = next.src;
+    });
   }
+
+  // Preload all gallery images on page load
+  window.addEventListener('load', () => {
+    Object.values(galleries).forEach(gallery => {
+      gallery.photos.forEach(photo => {
+        if (!photo.src.startsWith('http')) {
+          const img = new Image();
+          img.src = photo.src;
+        }
+      });
+    });
+  });
 
   function renderDots() {
     const dotsEl = document.getElementById('galleryDots');

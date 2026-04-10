@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orna Golf & Country Club — Melaka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --green-dark: #0D1F0F;
+    --green-mid: #1A3A1C;
+    --green-accent: #2D5A30;
+    --cream: #F5F0E8;
+    --cream-dark: #E8E0D0;
+    --white: #FDFCF9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--green-dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 60px 24px 80px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45,90,48,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      var(--green-dark);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 16px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 10vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 20px;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 4vw, 22px);
+    font-style: italic;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 32px;
+    transition: all 0.3s ease;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .cta-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .cta-primary svg { width: 18px; height: 18px; fill: var(--green-dark); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.4;
+    animation: fadeUp 1s 1s ease both;
+  }
+
+  .scroll-hint span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+
+  .scroll-line {
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 80px 24px; max-width: 480px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 7vw, 48px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ── PACKAGES ── */
+  .packages { background: var(--green-mid); max-width: 100%; padding: 80px 24px; }
+  .packages-inner { max-width: 480px; margin: 0 auto; }
+
+  .pkg-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 36px 28px;
+    margin-bottom: 24px;
+    position: relative;
+    background: rgba(13,31,15,0.6);
+    transition: all 0.3s ease;
+  }
+
+  .pkg-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .pkg-badge {
+    position: absolute;
+    top: -1px;
+    right: 24px;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+  }
+
+  .pkg-duration {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .pkg-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pkg-price-note {
+    font-size: 11px;
+    color: rgba(245,240,232,0.45);
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+
+  .pkg-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(201,168,76,0.15);
+    margin-bottom: 24px;
+  }
+
+  .pkg-includes {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+
+  .pkg-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(245,240,232,0.8);
+    margin-bottom: 10px;
+  }
+
+  .pkg-includes li::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pkg-excludes {
+    font-size: 11px;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  .pkg-gift {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    padding: 10px 14px;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* ── FACILITIES ── */
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .fac-item {
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 20px 16px;
+    transition: all 0.3s ease;
+  }
+
+  .fac-item:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(45,90,48,0.2);
+  }
+
+  .fac-icon { font-size: 22px; margin-bottom: 10px; }
+
+  .fac-name {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .fac-detail {
+    font-size: 11px;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.4;
+  }
+
+  /* ── DINING ── */
+  .dining { background: var(--green-mid); max-width: 100%; padding: 80px 24px; }
+  .dining-inner { max-width: 480px; margin: 0 auto; }
+
+  .dining-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 28px;
+    margin-bottom: 16px;
+    background: rgba(13,31,15,0.4);
+  }
+
+  .dining-type {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .dining-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .dining-desc {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.65);
+  }
+
+  .dining-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .dining-link:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+    gap: 10px;
+  }
+
+  .dining-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* ── LOCATION ── */
+  .location-box {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 28px;
+    background: rgba(45,90,48,0.1);
+    margin-bottom: 32px;
+  }
+
+  .loc-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .loc-row:last-child { margin-bottom: 0; }
+
+  .loc-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+  .loc-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .loc-text {
+    font-size: 13px;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.5;
+  }
+
+  .map-embed {
+    border: 1px solid rgba(201,168,76,0.2);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .distance-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .chip {
+    font-size: 11px;
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 6px 14px;
+    color: rgba(245,240,232,0.6);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CTA BOTTOM ── */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(45,90,48,0.4) 0%, transparent 70%),
+      var(--green-dark);
+    max-width: 100%;
+  }
+
+  .cta-inner { max-width: 480px; margin: 0 auto; }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 8vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold-light); }
+
+  .cta-desc {
+    font-size: 13px;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .wa-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 36px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+  }
+
+  .wa-button:hover {
+    background: #20bd5a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.35);
+  }
+
+  .wa-button svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+  .wa-note {
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    font-size: 11px;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 1px;
+  }
+
+  footer span { color: var(--gold); opacity: 0.6; }
+
+  /* ── GALLERY MODAL ── */
+  .fac-item {
+    cursor: pointer;
+  }
+
+  .fac-item .fac-hint {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.45);
+    margin-top: 6px;
+  }
+
+  .gallery-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8,18,9,0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .gallery-overlay.active { display: flex; }
+
+  .gallery-modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: var(--green-mid);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .gallery-close {
+    background: none;
+    border: none;
+    color: rgba(245,240,232,0.5);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color 0.2s;
+  }
+
+  .gallery-close:hover { color: var(--gold); }
+
+  .gallery-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--green-dark);
+    overflow: hidden;
+  }
+
+  .gallery-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(13,31,15,0.7);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+    z-index: 2;
+  }
+
+  .gallery-arrow:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--gold);
+  }
+
+  .gallery-arrow.prev { left: 10px; }
+  .gallery-arrow.next { right: 10px; }
+
+  .gallery-caption {
+    padding: 14px 20px;
+    font-size: 12px;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.5;
+  }
+
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 20px 16px;
+  }
+
+  .gallery-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.25);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .gallery-dot.active { background: var(--gold); }
+
+  .gallery-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(245,240,232,0.5);
+    background: rgba(13,31,15,0.6);
+    padding: 3px 8px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+
+  /* Intersection observer fade-in */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Est. 1997 · Melaka, Malaysia</div>
+  <h1 class="hero-title">Orna Golf &<br><em>Country Club</em></h1>
+  <p class="hero-sub">Melaka · Malaysia</p>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">Where the fairway meets heritage.</p>
+  <a href="https://wa.me/60173116301?text=Hi!%20I'm%20interested%20in%20Orna%20Golf%20Club%20packages.%20Please%20send%20more%20info." class="cta-primary" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Book via WhatsApp
+  </a>
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div class="packages">
+  <div class="packages-inner">
+    <p class="section-label reveal">Golf Packages</p>
+    <h2 class="section-title reveal">Choose Your<br><em>Escape</em></h2>
+
+    <!-- Package 1 -->
+    <div class="pkg-card reveal">
+      <div class="pkg-badge">Most Popular</div>
+      <p class="pkg-duration">1 Night · 2 Days</p>
+      <h3 class="pkg-name">Weekend Retreat</h3>
+      <div class="pkg-price">RM 300 <span style="font-size:22px; font-weight:400; color:var(--gold);">nett</span></div>
+      <p class="pkg-price-note">per person · twin sharing</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-includes">
+        <li>18-hole green fee (cart & insurance included)</li>
+        <li>3-star hotel accommodation (1 night)</li>
+        <li>Full board meals — breakfast, lunch & dinner</li>
+      </ul>
+      <p class="pkg-excludes">* Caddy fee & tip not included</p>
+      <div class="pkg-gift">🎁 &nbsp; Ball marker & reel towel included</div>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="pkg-card reveal">
+      <p class="pkg-duration">4 Nights · 5 Days</p>
+      <h3 class="pkg-name">Heritage Golf Tour</h3>
+      <div class="pkg-price">RM 1,200 <span style="font-size:22px; font-weight:400; color:var(--gold);">nett</span></div>
+      <p class="pkg-price-note">per person · twin sharing</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-includes">
+        <li>72-hole green fee (cart & insurance included)</li>
+        <li>3-star hotel accommodation (4 nights)</li>
+        <li>Full board meals — breakfast, lunch & dinner</li>
+        <li>Melaka River Cruise ticket included</li>
+      </ul>
+      <p class="pkg-excludes">* Caddy fee & tip not included</p>
+      <div class="pkg-gift">🎁 &nbsp; Ball marker, reel towel & River Cruise ticket</div>
+    </div>
+
+    <div style="text-align:center; margin-top: 32px;" class="reveal">
+      <a href="https://wa.me/60173116301?text=Hi!%20I'm%20interested%20in%20a%20golf%20package%20at%20Orna%20Golf%20Club.%20Please%20send%20me%20more%20info." class="cta-primary" target="_blank" style="margin: 0 auto;">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#0D1F0F;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enquire Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FACILITIES -->
+<section>
+  <p class="section-label reveal">World-Class Amenities</p>
+  <h2 class="section-title reveal">Club<br><em>Facilities</em></h2>
+  <div class="facilities-grid">
+    <div class="fac-item reveal" onclick="openGallery('driving')">
+      <div class="fac-icon">⛳</div>
+      <div class="fac-name">Driving Range</div>
+      <div class="fac-detail">50 bays · outdoor · lessons available</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('greens')">
+      <div class="fac-icon">🏌️</div>
+      <div class="fac-name">Practice Greens</div>
+      <div class="fac-detail">2 putting greens</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('restaurant')">
+      <div class="fac-icon">🍽️</div>
+      <div class="fac-name">Restaurant</div>
+      <div class="fac-detail">300 seats · Korean & Japanese dining</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('cafe')">
+      <div class="fac-icon">☕</div>
+      <div class="fac-name">Golfer's Café</div>
+      <div class="fac-detail">Local cuisine cafeteria</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('karaoke')">
+      <div class="fac-icon">🎤</div>
+      <div class="fac-name">Karaoke</div>
+      <div class="fac-detail">Private rooms available</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('pool')">
+      <div class="fac-icon">🏊</div>
+      <div class="fac-name">Swimming Pool</div>
+      <div class="fac-detail">Outdoor pool</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('gym')">
+      <div class="fac-icon">💪</div>
+      <div class="fac-name">Gym</div>
+      <div class="fac-detail">Fully equipped fitness centre</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+    <div class="fac-item reveal" onclick="openGallery('accommodation')">
+      <div class="fac-icon">🛏️</div>
+      <div class="fac-name">Accommodation</div>
+      <div class="fac-detail">Comfortable resort rooms</div>
+      <div class="fac-hint">tap to view photos</div>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<div class="dining">
+  <div class="dining-inner">
+    <p class="section-label reveal">Culinary Experience</p>
+    <h2 class="section-title reveal">Dine at<br><em>Orna Golf & Country Club</em></h2>
+
+    <div class="dining-card reveal">
+      <p class="dining-type">Korean Restaurant</p>
+      <h3 class="dining-name">Hometown Korean Restaurant</h3>
+      <p class="dining-desc">Over 40 authentic Korean dishes including premium samgyeopsal (grilled pork belly), Korean BBQ, soups, and rice dishes. A full Korean dining experience in the heart of Melaka.</p>
+      <a href="https://maps.app.goo.gl/HfqHBM2LZjdFEaBt9" target="_blank" class="dining-link">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+        View on Google Maps
+      </a>
+      <a href="https://www.facebook.com/Hometownkoreanrestaurant" target="_blank" class="dining-link" style="margin-left: 16px;">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/></svg>
+        Facebook
+      </a>
+    </div>
+
+    <div class="dining-card reveal">
+      <p class="dining-type">Japanese · Sashimi Bar</p>
+      <h3 class="dining-name">K-SUSHI</h3>
+      <p class="dining-desc">Specialising in aged salmon sashimi and premium nigiri. Our Japanese bar brings refined omakase-inspired dining to the clubhouse — fresh, artful, and expertly prepared.</p>
+      <a href="https://maps.app.goo.gl/Nk5TUbrCU8Xr3NKi8" target="_blank" class="dining-link">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+        View on Google Maps
+      </a>
+      <a href="https://www.facebook.com/k.sushi.my" target="_blank" class="dining-link" style="margin-left: 16px;">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section>
+  <p class="section-label reveal">Getting Here</p>
+  <h2 class="section-title reveal">Find<br><em>Us At</em></h2>
+  <div class="location-box reveal">
+    <div class="loc-row">
+      <div class="loc-icon">📍</div>
+      <div>
+        <p class="loc-label">Address</p>
+        <p class="loc-text">Orna Golf & Country Club<br>Jalan Gapam, 77200 Bemban<br>Melaka, Malaysia</p>
+      </div>
+    </div>
+    <div class="loc-row">
+      <div class="loc-icon">🗺️</div>
+      <div>
+        <p class="loc-label">Google Maps</p>
+        <a href="https://maps.app.goo.gl/cDp8jVRUfyRqG8sz6" target="_blank" style="font-size:13px; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3);">Open in Google Maps →</a>
+      </div>
+      </div>
+    </div>
+    <div class="loc-row">
+      <div class="loc-icon">📲</div>
+      <div>
+        <p class="loc-label">WhatsApp Enquiries</p>
+        <p class="loc-text">+60 17-311 6301 (Richard Lim)</p>
+      </div>
+    </div>
+  </div>
+  <div class="map-embed reveal">
+    <iframe
+      src="https://www.google.com/maps?q=Orna+Golf+%26+Country+Club+Jalan+Gapam+77200+Bemban+Melaka+Malaysia&output=embed"
+      width="100%"
+      height="280"
+      style="border:0; display:block; filter: grayscale(20%) contrast(1.05);"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+    <div class="distance-chips reveal">
+    <div class="chip">🚗 ~3 hrs from Singapore</div>
+    <div class="chip">🚗 ~2 hrs from KL</div>
+    <div class="chip">✈️ Near Melaka Airport</div>
+    <div class="chip">🦁 Near Melaka Zoo</div>
+    <div class="chip">🦋 Near Butterfly Park</div>
+    <div class="chip">🌿 Near Botanical Garden</div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title reveal">Ready to<br><em>Tee Off?</em></h2>
+    <p class="cta-desc reveal">Book your golf package today. Our team is ready to assist you via WhatsApp — fast, easy, and personal.</p>
+    <div class="reveal">
+      <a href="https://wa.me/60173116301?text=Hi!%20I'm%20interested%20in%20Orna%20Golf%20Club%20packages.%20Please%20send%20me%20more%20info." class="wa-button" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat with Us on WhatsApp
+      </a>
+      <p class="wa-note">Richard Lim · +60 17-311 6301</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Maison d'Orna</span> · Melaka, Malaysia</p>
+</footer>
+
+<!-- GALLERY MODAL -->
+<div class="gallery-overlay" id="galleryOverlay" onclick="handleOverlayClick(event)">
+  <div class="gallery-modal">
+    <div class="gallery-header">
+      <h3 class="gallery-title" id="galleryTitle"></h3>
+      <button class="gallery-close" onclick="closeGallery()">✕</button>
+    </div>
+    <div class="gallery-img-wrap">
+      <img id="galleryImg" src="" alt="">
+      <button class="gallery-arrow prev" onclick="changePhoto(-1)">‹</button>
+      <button class="gallery-arrow next" onclick="changePhoto(1)">›</button>
+      <div class="gallery-counter" id="galleryCounter"></div>
+    </div>
+    <div class="gallery-caption" id="galleryCaption"></div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </div>
+</div>
+
+<script>
+  // ── Facility gallery data ──
+  // Replace the src URLs below with your actual photo URLs when ready
+  const galleries = {
+    driving: {
+      title: 'Driving Range',
+      photos: [
+        { src: 'https://drive.google.com/uc?export=view&id=1NCGnrnR_ob2Gh41Vr2UAYISEuNEnnqGF', caption: '50-bay outdoor driving range — open daily' },
+      ]
+    },
+    greens: {
+      title: 'Practice Greens',
+      photos: [
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Practice+Green+1', caption: '2 immaculate putting greens for warm-up' },
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Practice+Green+2', caption: 'True championship-grade surfaces' },
+      ]
+    },
+    restaurant: {
+      title: 'Restaurant',
+      photos: [
+        { src: 'https://drive.google.com/uc?export=view&id=1fP4cTwgq-WQpcMLa59oxjQYMpxhJ4Vdv', caption: '300-seat restaurant with views of the golf course' },
+        { src: 'https://drive.google.com/uc?export=view&id=1TFMrbbk32nq0dJb4j2mvWBy9MTxYBIoc', caption: 'Authentic Korean BBQ & K-SUSHI Japanese bar' },
+      ]
+    },
+    cafe: {
+      title: "Golfer's Café",
+      photos: [
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Cafe+1', caption: "Golfer's Cafeteria serving local Malaysian favourites" },
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Cafe+2', caption: 'Perfect for a quick bite between rounds' },
+      ]
+    },
+    karaoke: {
+      title: 'Karaoke',
+      photos: [
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Karaoke+1', caption: 'Private karaoke rooms for groups' },
+        { src: 'https://placehold.co/600x450/1A3A1C/C9A84C?text=Karaoke+2', caption: 'The perfect end to a great round of golf' },
+      ]
+    },
+    pool: {
+      title: 'Swimming Pool',
+      photos: [
+        { src: 'https://drive.google.com/uc?export=view&id=10tYjj5t0z94oOLqwcvD9S4Vj8SqteRBg', caption: 'Outdoor swimming pool surrounded by greenery' },
+      ]
+    },
+    gym: {
+      title: 'Fitness Centre',
+      photos: [
+        { src: 'https://drive.google.com/uc?export=view&id=1Bywv3GMgZAJxzlyeC-FJMVuB0J8V4l_5', caption: 'Fully equipped fitness centre' },
+        { src: 'https://drive.google.com/uc?export=view&id=1Zs8jnwzaL1tsuDw2QKSq8wrQVtnCcPPf', caption: 'Cardio and strength training equipment available' },
+      ]
+    },
+    accommodation: {
+      title: 'Accommodation',
+      photos: [
+        { src: 'https://drive.google.com/uc?export=view&id=15DV3WLaGsT_lH19_FoU0v3WyHorgbx_0', caption: 'Twin room — comfortable resort accommodation' },
+        { src: 'https://drive.google.com/uc?export=view&id=1yfguKtQ-2FK7-qOJFVFwTQdW97-TVWHI', caption: 'Family room — spacious 4-person suite' },
+      ]
+    },
+  };
+
+  let currentGallery = null;
+  let currentIndex = 0;
+
+  function openGallery(key) {
+    currentGallery = galleries[key];
+    currentIndex = 0;
+    document.getElementById('galleryTitle').textContent = currentGallery.title;
+    document.getElementById('galleryOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    renderPhoto();
+    renderDots();
+  }
+
+  function closeGallery() {
+    document.getElementById('galleryOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('galleryOverlay')) closeGallery();
+  }
+
+  function renderPhoto() {
+    const photo = currentGallery.photos[currentIndex];
+    const img = document.getElementById('galleryImg');
+    img.style.opacity = 0;
+    setTimeout(() => {
+      img.src = photo.src;
+      img.style.opacity = 1;
+    }, 150);
+    document.getElementById('galleryCaption').textContent = photo.caption;
+    document.getElementById('galleryCounter').textContent = (currentIndex + 1) + ' / ' + currentGallery.photos.length;
+    document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function renderDots() {
+    const dotsEl = document.getElementById('galleryDots');
+    dotsEl.innerHTML = currentGallery.photos.map((_, i) =>
+      `<div class="gallery-dot${i === 0 ? ' active' : ''}" onclick="goToPhoto(${i})"></div>`
+    ).join('');
+  }
+
+  function changePhoto(dir) {
+    const len = currentGallery.photos.length;
+    currentIndex = (currentIndex + dir + len) % len;
+    renderPhoto();
+  }
+
+  function goToPhoto(i) {
+    currentIndex = i;
+    renderPhoto();
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('galleryOverlay').classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') changePhoto(-1);
+    if (e.key === 'ArrowRight') changePhoto(1);
+    if (e.key === 'Escape') closeGallery();
+  });
+
+  // Intersection observer
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
